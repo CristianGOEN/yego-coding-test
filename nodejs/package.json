@@ -1,0 +1,12 @@
+{
+  "name": "yego-ride-service-api-call",
+  "version": "1.0.0",
+  "description": "A simple Node.js app to fetch data from an API and send it to a Laravel endpoint.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
