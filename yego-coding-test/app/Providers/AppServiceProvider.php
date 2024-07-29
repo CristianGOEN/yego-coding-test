@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Yego\Booking\Rides\Domain\RideRepository;
 use Yego\Booking\Rides\Infrastructure\EloquentRideRepository;
 use Yego\Booking\Vehicles\Domain\VehicleRepository;
-use Yego\Booking\Vehicles\Infrastructure\EloquentVehicleRepository;
+use Yego\Booking\Vehicles\Infrastructure\CacheVehicleRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             VehicleRepository::class,
-            EloquentVehicleRepository::class
+            CacheVehicleRepository::class
         );
 
         $this->app->bind(

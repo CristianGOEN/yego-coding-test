@@ -18,6 +18,7 @@ final class EloquentRideModel extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'vehicleId'
+        'vehicleId',
+        'date'
     ];
 }
