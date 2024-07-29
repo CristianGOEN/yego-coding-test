@@ -20,6 +20,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Yego\\": ["src"],
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
