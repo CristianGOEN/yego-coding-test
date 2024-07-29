@@ -24,4 +24,9 @@ final class VehicleBattery extends IntValueObject
             throw new VehicleBatteryIsInvalid();
         }
     }
+
+    public function hasDecreased(VehicleBattery $battery): bool
+    {
+        return $battery->value() < $this->value();
+    }
 }

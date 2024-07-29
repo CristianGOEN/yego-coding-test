@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yego\Booking\Vehicles\Domain;
 
 use DateTime;
+use Yego\Booking\Shared\Application\Create\CreateVehicleRequest;
 use Yego\Shared\Domain\Utils;
 use Yego\Shared\Domain\Vehicles\VehicleId;
 
@@ -35,11 +36,33 @@ final class Vehicle
         VehicleCoordinates $coordinates,
         VehicleBattery $battery,
         VehicleType $type,
-        ?DateTime $createdOn,
-        ?DateTime $updatedOn
+        DateTime $createdOn = null,
+        DateTime $updatedOn = null
     ): self
     {
         return new self($id, $name, $coordinates, $battery, $type, $createdOn, $updatedOn);
+    }
+
+    public static function createFromRequest(CreateVehicleRequest $request): self
+    {
+        $id = new VehicleId($request->id());
+        $name = new VehicleName($request->name());
+        $coordinates = new VehicleCoordinates($request->latitude(), $request->longitude());
+        $battery = new VehicleBattery($request->battery());
+        $type = new VehicleType($request->type());
+
+        return new self($id, $name, $coordinates, $battery, $type, null, null);
+    }
+
+    public static function createFromArray(array $array): self
+    {
+        $id = new VehicleId($array['id']);
+        $name = new VehicleName($array['name']);
+        $coordinates = new VehicleCoordinates($array['latitude'], $array['longitude']);
+        $battery = new VehicleBattery($array['battery']);
+        $type = new VehicleType($array['type']);
+
+        return new self($id, $name, $coordinates, $battery, $type, null, null);
     }
 
     public function id(): VehicleId
@@ -89,5 +112,17 @@ final class Vehicle
         $this->battery = $battery;
         $this->type = $type;
         $this->updatedOn = Utils::formatDate(new DateTime('now'));
+    }
+
+    public function toArray(): array
+    {
+        return [
+            "id" => $this->id->value(),
+            "name" => $this->name->value(),
+            "latitude" => $this->coordinates->latitude(),
+            "longitude" => $this->coordinates->longitude(),
+            "battery" => $this->battery->value(),
+            "type" => $this->type->value()
+        ];
     }
 }
