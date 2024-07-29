@@ -2,6 +2,7 @@ version: '3.3'
 
 services:
   nodejs:
+    container_name: nodejs
     build:
       context: ./nodejs
     volumes:
@@ -34,6 +35,7 @@ services:
       - yego-network
 
   redis:
+    container_name: redis
     image: redis:latest
     ports:
       - "6379:6379"
@@ -41,6 +43,7 @@ services:
       - yego-network
 
   nginx:
+    container_name: nginx-y
     image: nginx:latest
     ports:
       - "8080:80"

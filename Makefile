@@ -9,6 +9,9 @@ up:
 stop:
 	$(DOCKER_COMPOSE) stop
 
+down:
+	$(DOCKER_COMPOSE) down
+
 ssh:
 	docker exec -it laravel bash
 
