@@ -10,13 +10,13 @@ use Yego\Shared\Domain\Vehicles\VehicleId;
 
 final class Ride
 {
-    private DateTime $rideDate;
+    private DateTime $date;
     private RideId $id;
 
     public function __construct(private VehicleId $vehicleId)
     {
         $this->id = new RideId();
-        $this->rideDate = Utils::formatDate(new DateTime('now'));
+        $this->date = Utils::formatDate(new DateTime('now'));
     }
 
     public static function create(VehicleId $id): self
@@ -34,8 +34,8 @@ final class Ride
         return $this->vehicleId;
     }
 
-    public function rideDate(): DateTime
+    public function date(): DateTime
     {
-        return $this->rideDate;
+        return $this->date;
     }
 }
