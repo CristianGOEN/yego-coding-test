@@ -10,19 +10,23 @@ use Yego\Shared\Domain\Vehicles\VehicleId;
 
 final class Vehicle
 {
-    private DateTime $createdOn;
-    private DateTime $updatedOn;
-
     public function __construct(
         private VehicleId $id,
         private VehicleName $name,
         private VehicleCoordinates $coordinates,
         private VehicleBattery $battery,
-        private VehicleType $type
+        private VehicleType $type,
+        private ?DateTime $createdOn,
+        private ?DateTime $updatedOn
     )
     {
-        $this->createdOn = Utils::formatDate(new DateTime('now'));
-        $this->updatedOn = Utils::formatDate(new DateTime('now'));
+        if (!$createdOn) {
+            $this->createdOn = Utils::formatDate(new DateTime('now'));
+        }
+
+        if (!$updatedOn) {
+            $this->updatedOn = Utils::formatDate(new DateTime('now'));
+        }
     }
 
     public static function create(
@@ -30,10 +34,12 @@ final class Vehicle
         VehicleName $name,
         VehicleCoordinates $coordinates,
         VehicleBattery $battery,
-        VehicleType $type
+        VehicleType $type,
+        ?DateTime $createdOn,
+        ?DateTime $updatedOn
     ): self
     {
-        return new self($id, $name, $coordinates, $battery, $type);
+        return new self($id, $name, $coordinates, $battery, $type, $createdOn, $updatedOn);
     }
 
     public function id(): VehicleId
