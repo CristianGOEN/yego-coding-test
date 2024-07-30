@@ -27,3 +27,9 @@ search-key:
 
 statistics:
 	docker exec -it laravel sh -c 'php artisan command:stats $(args)'
+
+run-tests:
+	$(DOCKER_COMPOSE) exec laravel php ./vendor/bin/phpunit tests
+
+migrate:
+	$(DOCKER_COMPOSE) exec laravel php artisan migrate
