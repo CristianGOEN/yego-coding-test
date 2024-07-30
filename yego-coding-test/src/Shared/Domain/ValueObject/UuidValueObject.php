@@ -24,7 +24,7 @@ class UuidValueObject
         return $this->value;
     }
 
-    private function ensureIsValidUuid(string $id): void
+    public static function ensureIsValidUuid(string $id): void
     {
         if (!RamseyUuid::isValid($id)) {
             throw new UuidIsInvalid();
