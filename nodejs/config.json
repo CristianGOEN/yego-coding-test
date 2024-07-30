@@ -1,0 +1,15 @@
+{
+  "connection": {
+    "api": {
+      "scheme": "https",
+      "hostname": "api.rideyego.com",
+      "url": "api/v1/city/1/vehicles",
+      "token": "8ugk4T1i2lr7qP51QkkGmmwoETzaB5Rabklgvk8pV1reyr9SZI9aHXKom2d8"
+    },
+    "endpoint": {
+      "scheme": "http",
+      "hostname": "nginx:80",
+      "url": "api/ride"
+    }
+  }
+}
