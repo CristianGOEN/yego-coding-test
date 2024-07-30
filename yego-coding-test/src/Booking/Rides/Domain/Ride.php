@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yego\Booking\Rides\Domain;
 
 use DateTime;
-use Yego\Shared\Domain\Utils;
 use Yego\Shared\Domain\Vehicles\VehicleId;
 
 final class Ride
@@ -16,7 +15,7 @@ final class Ride
     public function __construct(private VehicleId $vehicleId)
     {
         $this->id = new RideId();
-        $this->date = Utils::formatDate(new DateTime('now'));
+        $this->date = new DateTime('now');
     }
 
     public static function create(VehicleId $id): self
