@@ -24,3 +24,6 @@ get-all-keys:
 
 search-key:
 	docker exec -it redis redis-cli -n 1 GET "$(args)"
+
+statistics:
+	docker exec -it laravel sh -c 'php artisan command:stats $(args)'
